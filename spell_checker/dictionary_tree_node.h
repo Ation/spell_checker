@@ -11,6 +11,8 @@
 namespace spell_checker {
 
 class DictionaryTreeNode {
+public:
+
 };
 
 };
