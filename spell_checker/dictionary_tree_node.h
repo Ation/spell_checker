@@ -12,7 +12,16 @@ namespace spell_checker {
 
 class DictionaryTreeNode {
 public:
+	typedef DictionaryTreeNode my_type;
 
+	DictionaryTreeNode();
+	virtual ~DictionaryTreeNode();
+
+private:
+	// disabled
+	DictionaryTreeNode(const DictionaryTreeNode&);
+	// disabled
+	DictionaryTreeNode& operator = (const DictionaryTreeNode&);
 };
 
 };

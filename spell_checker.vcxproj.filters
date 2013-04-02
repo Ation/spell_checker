@@ -2,6 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="spell_checker\dictionary_tree_node.cpp">
+      <Filter>SpellChecker\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SpellChecker">
@@ -13,10 +16,20 @@
     <Filter Include="SpellChecker\Source">
       <UniqueIdentifier>{e36817b3-0d65-41a2-8ca4-deb97f9bcbc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Testing">
+      <UniqueIdentifier>{cbf0db5b-d002-4e52-bcec-93b786122783}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Testing\DictionaryTreeNode">
+      <UniqueIdentifier>{aad52291-d2f2-46df-ab60-cac280e6a744}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="spell_checker\dictionary_tree_node.h">
       <Filter>SpellChecker\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="testing\testing.h">
+      <Filter>Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h" />
   </ItemGroup>
 </Project>
