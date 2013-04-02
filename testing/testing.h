@@ -1,0 +1,6 @@
+#ifndef __SPELL_CHECKER_TESTING_H__
+#define __SPELL_CHECKER_TESTING_H__
+
+
+
+#endif // __SPELL_CHECKER_TESTING_H__

@@ -4,8 +4,19 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="NewFilter1">
-      <UniqueIdentifier>{bd54c6f3-b2bb-4655-b74c-28eb7b068d51}</UniqueIdentifier>
+    <Filter Include="SpellChecker">
+      <UniqueIdentifier>{00b94052-6490-48b1-812b-878c4b0f89cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SpellChecker\Headers">
+      <UniqueIdentifier>{f8adb29c-ea07-4919-b07d-1ce8451e38af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SpellChecker\Source">
+      <UniqueIdentifier>{e36817b3-0d65-41a2-8ca4-deb97f9bcbc5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="spell_checker\dictionary_tree_node.h">
+      <Filter>SpellChecker\Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
