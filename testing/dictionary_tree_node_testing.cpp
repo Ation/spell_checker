@@ -8,9 +8,11 @@ using namespace spell_checker;
 using namespace std;
 
 static bool CreateRootNodeTest();
+static bool CreateChildTest();
 
 TestCase	cases[] = {
-	{"Create Root node", CreateRootNodeTest}
+	{"Create Root node", CreateRootNodeTest},
+	{"Create child test", CreateChildTest}
 };
 
 void
@@ -33,7 +35,8 @@ StartDictionaryTreeNodeTesting() {
 	}
 }
 
-bool CreateRootNodeTest() {
+bool
+CreateRootNodeTest() {
 	DictionaryTreeNode *root_node = DictionaryTreeNode::CreateRootNode();
 
 	bool result = false;
@@ -52,6 +55,57 @@ bool CreateRootNodeTest() {
 
 			if (root_node->get_node_string().length() != 0) {
 				result = false;
+				break;
+			}
+
+			result = true;
+		} while (false);
+
+		delete root_node;
+	} else {
+		result = false;
+	}
+
+	return result;
+}
+
+bool
+CreateChildTest() {
+	bool	result;
+
+	DictionaryTreeNode *root_node = DictionaryTreeNode::CreateRootNode();
+	DictionaryTreeNode *child = NULL;
+	char symbol = 'a';
+
+	if (NULL != root_node) {
+		do {
+			result = false;
+
+			child = root_node->get_child(symbol);
+			if (NULL != child) {
+				break;
+			}
+
+			child = root_node->create_child(symbol);
+
+			if (NULL == child) {
+				break;
+			}
+
+			child = root_node->get_child(symbol);
+			if (NULL == child) {
+				break;
+			}
+
+			if (child->get_node_symbol() != symbol) {
+				break;
+			}
+
+			if (child->get_node_string().length() != 0) {
+				break;
+			}
+
+			if (child->could_be_last()) {
 				break;
 			}
 
