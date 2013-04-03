@@ -2,8 +2,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="testing\testing.cpp">
+      <Filter>Testing</Filter>
+    </ClCompile>
     <ClCompile Include="spell_checker\dictionary_tree_node.cpp">
       <Filter>SpellChecker\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="testing\dictionary_tree_node_testing.cpp">
+      <Filter>Testing\DictionaryTreeNode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -24,12 +30,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="spell_checker\dictionary_tree_node.h">
-      <Filter>SpellChecker\Headers</Filter>
-    </ClInclude>
     <ClInclude Include="testing\testing.h">
       <Filter>Testing</Filter>
     </ClInclude>
     <ClInclude Include="main.h" />
+    <ClInclude Include="testing\dictionary_tree_node_testing.h">
+      <Filter>Testing\DictionaryTreeNode</Filter>
+    </ClInclude>
+    <ClInclude Include="spell_checker\dictionary_tree_node.h">
+      <Filter>SpellChecker\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="testing\spell_checker_testing.h">
+      <Filter>Testing</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

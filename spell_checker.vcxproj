@@ -76,10 +76,14 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="spell_checker\dictionary_tree_node.cpp" />
+    <ClCompile Include="testing\dictionary_tree_node_testing.cpp" />
+    <ClCompile Include="testing\testing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
     <ClInclude Include="spell_checker\dictionary_tree_node.h" />
+    <ClInclude Include="testing\dictionary_tree_node_testing.h" />
+    <ClInclude Include="testing\spell_checker_testing.h" />
     <ClInclude Include="testing\testing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
