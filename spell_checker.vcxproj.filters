@@ -11,6 +11,9 @@
     <ClCompile Include="testing\dictionary_tree_node_testing.cpp">
       <Filter>Testing\DictionaryTreeNode</Filter>
     </ClCompile>
+    <ClCompile Include="spell_checker\spelling_dictionary.cpp">
+      <Filter>SpellChecker\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SpellChecker">
@@ -42,6 +45,9 @@
     </ClInclude>
     <ClInclude Include="testing\spell_checker_testing.h">
       <Filter>Testing</Filter>
+    </ClInclude>
+    <ClInclude Include="spell_checker\spelling_dictionary.h">
+      <Filter>SpellChecker\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
