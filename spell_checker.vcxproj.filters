@@ -14,6 +14,9 @@
     <ClCompile Include="spell_checker\spelling_dictionary.cpp">
       <Filter>SpellChecker\Source</Filter>
     </ClCompile>
+    <ClCompile Include="spell_checker\dictionary_option.cpp">
+      <Filter>SpellChecker\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="SpellChecker">
@@ -47,6 +50,9 @@
       <Filter>Testing</Filter>
     </ClInclude>
     <ClInclude Include="spell_checker\spelling_dictionary.h">
+      <Filter>SpellChecker\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="spell_checker\dictionary_option.h">
       <Filter>SpellChecker\Headers</Filter>
     </ClInclude>
   </ItemGroup>

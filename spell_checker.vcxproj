@@ -75,6 +75,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="spell_checker\dictionary_option.cpp" />
     <ClCompile Include="spell_checker\dictionary_tree_node.cpp" />
     <ClCompile Include="spell_checker\spelling_dictionary.cpp" />
     <ClCompile Include="testing\dictionary_tree_node_testing.cpp" />
@@ -82,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
+    <ClInclude Include="spell_checker\dictionary_option.h" />
     <ClInclude Include="spell_checker\dictionary_tree_node.h" />
     <ClInclude Include="spell_checker\spelling_dictionary.h" />
     <ClInclude Include="testing\dictionary_tree_node_testing.h" />
