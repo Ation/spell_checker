@@ -3,13 +3,13 @@
 using namespace std;
 using namespace spell_checker;
 
-spelling_dictionary::spelling_dictionary() {
+SpellingDictionary::SpellingDictionary() {
 }
 
-spelling_dictionary::~spelling_dictionary() {
+SpellingDictionary::~SpellingDictionary() {
 }
 
 bool
-spelling_dictionary::AddWord(std::string &word) {
+SpellingDictionary::add_word(std::string &word) {
 	return false;
 }

@@ -7,20 +7,20 @@
 
 namespace spell_checker {
 
-class spelling_dictionary {
+class SpellingDictionary {
 public:
-	spelling_dictionary();
-	~spelling_dictionary();
+	SpellingDictionary();
+	~SpellingDictionary();
 
-	bool	AddWord(std::string &word);
+	bool	add_word(std::string &word);
 	
-	std::vector<std::shared_ptr<std::string> > GetWordsFromDictionary(std::string &word) const;
+	std::vector<std::shared_ptr<std::string> > get_words(std::string &word) const;
 private:
 	// disabled
-	spelling_dictionary(const spelling_dictionary&);
+	SpellingDictionary(const SpellingDictionary&);
 
 	// disabled
-	spelling_dictionary& operator = (const spelling_dictionary&);
+	SpellingDictionary& operator = (const SpellingDictionary&);
 };
 
 }
