@@ -13,7 +13,7 @@ set( HEADERS
   dictionary_tree_node_testing.h
   )
 
-include_directories( ${PELL_CHECKER_INCLUDE} )
+include_directories( ${SPELL_CHECKER_INCLUDE} )
 
 add_library( testing ${SOURCES} ${HEADERS} )
 
