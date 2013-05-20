@@ -2,7 +2,7 @@
 
 #include "testing.h"
 #include "dictionary_tree_node_testing.h"
-#include "../spell_checker/dictionary_tree_node.h"
+#include <dictionary_tree_node.h>
 
 using namespace spell_checker;
 using namespace std;
