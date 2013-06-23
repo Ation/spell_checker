@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-project( spell_checker)
+project( spell_checker_lib )
 
 set( SOURCES
   dictionary_tree_node.cpp
@@ -12,4 +12,4 @@ set( HEADERS
   spelling_dictionary.h
   )
 
-add_library( spell_checker ${SOURCES} ${HEADERS})
+add_library( spell_checker_lib ${SOURCES} ${HEADERS})

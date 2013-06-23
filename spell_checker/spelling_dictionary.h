@@ -13,8 +13,6 @@ public:
 	~spelling_dictionary();
 
 	bool	AddWord(std::string &word);
-	
-	std::vector<std::shared_ptr<std::string> > GetWordsFromDictionary(std::string &word) const;
 private:
 	// disabled
 	spelling_dictionary(const spelling_dictionary&);
