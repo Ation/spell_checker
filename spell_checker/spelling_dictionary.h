@@ -35,6 +35,7 @@ public:
 	std::vector<std::string> GetWordOptions(std::string &word, unsigned int allowed_correction_count);
 
 	typedef DictionaryTreeNode node_type;
+	bool	AddWord(std::string &word);
 private:
 	// disabled
 	SpellingDictionary(const SpellingDictionary&);

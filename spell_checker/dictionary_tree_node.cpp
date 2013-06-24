@@ -34,7 +34,7 @@ DictionaryTreeNode::~DictionaryTreeNode() {
 
 void
 DictionaryTreeNode::erase_child_pointers() {
-	m_childs.assign(_alpha_count, 0);
+    m_childs.assign(_alpha_count, NULL);
 }
 
 DictionaryTreeNode*
