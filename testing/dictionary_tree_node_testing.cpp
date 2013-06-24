@@ -2,7 +2,7 @@
 
 #include "testing.h"
 #include "dictionary_tree_node_testing.h"
-#include "../spell_checker/dictionary_tree_node.h"
+#include <dictionary_tree_node.h>
 
 using namespace spell_checker;
 using namespace std;
@@ -23,9 +23,9 @@ StartDictionaryTreeNodeTesting() {
 
 		cout << "################################" << endl;
 
-		cout << "Starting: " << cases[0].test_name << endl;
+        cout << "Starting: " << cases[i].test_name << endl;
 		try {
-			result = cases[0].test_function();
+            result = cases[i].test_function();
 			cout << "Result: " << (result ? "PASS" : "FAIL") << endl;
 		} catch (...) {
 			cout << "Ended with exception" << endl;
