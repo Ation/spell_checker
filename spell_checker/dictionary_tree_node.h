@@ -49,7 +49,7 @@ private:
 	char				m_node_symbol;
 	std::string			*m_word;
 
-	std::vector<my_type*>		m_childs;
+    std::vector< my_type * >		m_childs;
 
 	void			erase_child_pointers();
 

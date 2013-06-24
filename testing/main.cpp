@@ -1,6 +1,6 @@
 #include "main.h"
 
-#include "testing\spell_checker_testing.h"
+#include "spell_checker_testing.h"
 
 int main(void) {
 	StartTest();
