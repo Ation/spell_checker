@@ -19,9 +19,9 @@ SpellingDictionary::~SpellingDictionary() {
 
 bool
 SpellingDictionary::AddWord(const string &word) {
-	if (word.empty()) {
-		return false;
-	}
+    if (!DictionaryTreeNode::checkWord(word)) {
+        return false;
+    }
 
     DictionaryTreeNode	*current_node = m_root;
 	int			index = 0;

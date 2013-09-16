@@ -97,7 +97,7 @@ DictionaryTreeNode::get_node_symbol() const {
 }
 
 int
-DictionaryTreeNode::get_raw_index(char symbol) const {
+DictionaryTreeNode::get_raw_index(char symbol) {
 	if ((symbol >= 'a') && (symbol <= 'z')) {
 		return symbol - 'a';
 	}
@@ -133,4 +133,20 @@ vector<DictionaryTreeNode*> DictionaryTreeNode::getChilds() const
     vector<DictionaryTreeNode*> result(m_childs);
 
     return result;
+}
+
+
+bool DictionaryTreeNode::checkWord(const string &word)
+{
+    if (word.empty()) {
+        return false;
+    }
+
+    for (int i=0; i<word.length(); i++) {
+        if (_invalid_raw_index == get_raw_index(word[i])) {
+            return false;
+        }
+    }
+
+    return true;
 }

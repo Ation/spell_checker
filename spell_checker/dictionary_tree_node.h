@@ -35,6 +35,8 @@ public:
 
     std::vector<DictionaryTreeNode*> getChilds() const;
 
+    static bool checkWord(const std::string &word);
+
 private:
     DictionaryTreeNode(char node_symbol, const std::string &word);
 
@@ -53,7 +55,7 @@ private:
 
 	void			erase_child_pointers();
 
-	int				get_raw_index(char symbol) const;
+    static int				get_raw_index(char symbol);
 
     DictionaryTreeNode*		get_child_by_index(int raw_index);
     void                    set_child(DictionaryTreeNode *child, int raw_index);
