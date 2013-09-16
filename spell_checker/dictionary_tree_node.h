@@ -15,17 +15,15 @@ namespace spell_checker {
 
 class DictionaryTreeNode {
 public:
-	typedef DictionaryTreeNode my_type;
-
-	static my_type*	CreateRootNode();
+    static DictionaryTreeNode*	CreateRootNode();
 
 	virtual ~DictionaryTreeNode();
 
-	my_type*	get_child(char symbol);
+    DictionaryTreeNode*	get_child(char symbol);
 
-	my_type*	create_child(char symbol);
+    DictionaryTreeNode*	create_child(char symbol);
 
-	my_type*	create_ending_child(char symbol, std::string &word);
+    DictionaryTreeNode*	create_ending_child(char symbol, std::string &word);
 
 	bool		could_be_last() const;
 
@@ -35,7 +33,7 @@ public:
 
 	static const char	_not_a_symbol = 0;
 
-    std::vector<my_type*> getChilds() const;
+    std::vector<DictionaryTreeNode*> getChilds() const;
 
 private:
 	DictionaryTreeNode(char node_symbol, std::string &word);
@@ -51,14 +49,14 @@ private:
 	char				m_node_symbol;
 	std::string			*m_word;
 
-    std::vector< my_type * >		m_childs;
+    std::vector< DictionaryTreeNode * >		m_childs;
 
 	void			erase_child_pointers();
 
 	int				get_raw_index(char symbol) const;
 
-	my_type*		get_child_by_index(int raw_index);
-	void			set_child(my_type *child, int raw_index);
+    DictionaryTreeNode*		get_child_by_index(int raw_index);
+    void                    set_child(DictionaryTreeNode *child, int raw_index);
 
 	// internal constants
 	static const int	_alpha_count = 26;

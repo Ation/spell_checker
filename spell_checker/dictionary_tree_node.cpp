@@ -3,8 +3,7 @@
 using namespace spell_checker;
 using namespace std;
 
-DictionaryTreeNode::my_type*
-DictionaryTreeNode::CreateRootNode() {
+DictionaryTreeNode *DictionaryTreeNode::CreateRootNode() {
 	return new DictionaryTreeNode(_not_a_symbol);
 }
 
@@ -131,7 +130,7 @@ DictionaryTreeNode::get_node_string() const {
 
 vector<DictionaryTreeNode*> DictionaryTreeNode::getChilds() const
 {
-    vector<my_type*> result(m_childs);
+    vector<DictionaryTreeNode*> result(m_childs);
 
     return result;
 }
