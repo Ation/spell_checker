@@ -12,7 +12,7 @@ DictionaryTreeNode::DictionaryTreeNode(char node_symbol) :
 	erase_child_pointers();
 }
 
-DictionaryTreeNode::DictionaryTreeNode(char node_symbol, string &word) : 
+DictionaryTreeNode::DictionaryTreeNode(char node_symbol, const string &word) :
   m_node_symbol(node_symbol) {
 
 	m_word = new string(word);
@@ -67,7 +67,7 @@ DictionaryTreeNode::create_child(char symbol) {
 }
 
 DictionaryTreeNode*
-DictionaryTreeNode::create_ending_child(char symbol, string &word) {
+DictionaryTreeNode::create_ending_child(char symbol, const string &word) {
 	int		index = get_raw_index(symbol);
 
 	if (_invalid_raw_index != index) {

@@ -23,7 +23,7 @@ DictionaryOption::GetString() const {
 }
 
 bool
-DictionaryOption::ReachEnd(std::string &word) const {
+DictionaryOption::ReachEnd(const std::string &word) const {
     return word_index == word.length();
 }
 
@@ -33,7 +33,7 @@ DictionaryOption::WordComplete() const {
 }
 
 bool
-DictionaryOption::MoveToNextSymbol(std::string &word) {
+DictionaryOption::MoveToNextSymbol(const string &word) {
     node = node->get_child(word[word_index]);
 
     if (0 != node) {
@@ -47,7 +47,7 @@ DictionaryOption::MoveToNextSymbol(std::string &word) {
 }
 
 void
-DictionaryOption::InsertCorrections(std::list<DictionaryOption> &c, std::string &word) const {
+DictionaryOption::InsertCorrections(std::list<DictionaryOption> &c, const string &word) const {
     // add possible insertions
     std::vector<DictionaryTreeNode*> childs = node->getChilds();
     for (std::vector<DictionaryTreeNode*>::iterator i_node = childs.begin(); i_node != childs.end(); ++i_node) {

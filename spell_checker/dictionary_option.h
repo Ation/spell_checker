@@ -19,13 +19,13 @@ public:
 
 	bool		corrections_allowed(int	allowed_correction_count) const;
 
-    void		InsertCorrections(std::list<DictionaryOption> &c, std::string &word) const;
+    void		InsertCorrections(std::list<DictionaryOption> &c, const std::string &word) const;
 
-    bool	ReachEnd(std::string &word) const;
+    bool	ReachEnd(const std::string &word) const;
 
     bool	WordComplete() const;
 
-    bool	MoveToNextSymbol(std::string &word);
+    bool	MoveToNextSymbol(const std::string &word);
 
 	std::string		GetString() const;
 

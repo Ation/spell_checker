@@ -18,7 +18,7 @@ SpellingDictionary::~SpellingDictionary() {
 }
 
 bool
-SpellingDictionary::AddWord(string &word) {
+SpellingDictionary::AddWord(const string &word) {
 	if (word.empty()) {
 		return false;
 	}
@@ -41,7 +41,7 @@ SpellingDictionary::AddWord(string &word) {
 }
 
 vector<string>
-SpellingDictionary::GetWordOptions(string &word, unsigned int allowed_correction_count) {
+SpellingDictionary::GetWordOptions(const string &word, unsigned int allowed_correction_count) {
 
 	if (word.empty()) {
 		return vector<string>();

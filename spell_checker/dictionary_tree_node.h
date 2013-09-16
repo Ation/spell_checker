@@ -23,7 +23,7 @@ public:
 
     DictionaryTreeNode*	create_child(char symbol);
 
-    DictionaryTreeNode*	create_ending_child(char symbol, std::string &word);
+    DictionaryTreeNode*	create_ending_child(char symbol,const std::string &word);
 
 	bool		could_be_last() const;
 
@@ -36,7 +36,7 @@ public:
     std::vector<DictionaryTreeNode*> getChilds() const;
 
 private:
-	DictionaryTreeNode(char node_symbol, std::string &word);
+    DictionaryTreeNode(char node_symbol, const std::string &word);
 
 	DictionaryTreeNode(char node_symbol);
 

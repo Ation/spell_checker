@@ -10,7 +10,7 @@ using namespace std;
 static bool CreateRootNodeTest();
 static bool CreateChildTest();
 
-TestCase	cases[] = {
+static TestCase	cases[] = {
 	{"Create Root node", CreateRootNodeTest},
 	{"Create child test", CreateChildTest}
 };
@@ -18,7 +18,8 @@ TestCase	cases[] = {
 void
 StartDictionaryTreeNodeTesting() {
 	bool result;
-
+    int passCount = 0;
+    int failCount = 0;
 	for (int i=0; i<sizeof(cases)/sizeof(*cases); i++) {
 
 		cout << "################################" << endl;
@@ -26,13 +27,15 @@ StartDictionaryTreeNodeTesting() {
         cout << "Starting: " << cases[i].test_name << endl;
 		try {
             result = cases[i].test_function();
-			cout << "Result: " << (result ? "PASS" : "FAIL") << endl;
+            cout << "Result: " << (result ? (passCount++, "PASS") : (failCount++, "FAIL")) << endl;
 		} catch (...) {
 			cout << "Ended with exception" << endl;
 		}
 
 		cout << "################################" << endl << endl;
 	}
+
+    cout << "Total: " << passCount << " passed; " << failCount << " failed" << endl;
 }
 
 bool

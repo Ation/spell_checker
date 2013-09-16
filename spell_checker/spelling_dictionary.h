@@ -20,7 +20,7 @@ public:
 	// Return:
 	//	true if word was added
 	//	false if word could not be added to dictionary
-	bool AddWord(std::string &word);
+    bool AddWord(const std::string &word);
 
 	// Method:
 	//	GetWordOptions - get possible words from dictionary
@@ -32,7 +32,7 @@ public:
 	//	if list is empty, than word and all possible modifications not exist in dictionary
 	// Remarks:
 	//	if exact match found word is returned in original form
-	std::vector<std::string> GetWordOptions(std::string &word, unsigned int allowed_correction_count);
+    std::vector<std::string> GetWordOptions(const std::string &word, unsigned int allowed_correction_count);
 private:
 	// disabled
 	SpellingDictionary(const SpellingDictionary&);
