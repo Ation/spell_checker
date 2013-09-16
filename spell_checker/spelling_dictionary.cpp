@@ -11,7 +11,7 @@ using namespace std;
 using namespace spell_checker;
 
 SpellingDictionary::SpellingDictionary() : m_count(0) {
-	m_root = node_type::CreateRootNode();
+    m_root = DictionaryTreeNode::CreateRootNode();
 }
 
 SpellingDictionary::~SpellingDictionary() {
@@ -23,7 +23,7 @@ SpellingDictionary::AddWord(string &word) {
 		return false;
 	}
 
-	node_type	*current_node = m_root;
+    DictionaryTreeNode	*current_node = m_root;
 	int			index = 0;
 
 	while (true) {
@@ -47,22 +47,22 @@ SpellingDictionary::GetWordOptions(string &word, unsigned int allowed_correction
 		return vector<string>();
 	}
 
-	list<option_type>	current_options;
-	list<option_type>	next_options;
+    list<DictionaryOption>	current_options;
+    list<DictionaryOption>	next_options;
 	int			current_corrections=0;
 
-	current_options.push_front(option_type(new DictionaryOption(m_root, word.length())));
+    current_options.push_front(DictionaryOption(m_root, word.length()));
 
 	while (true) {
-		for (list<option_type>::iterator i=current_options.begin(); i != current_options.end(); /*no increment*/) {
+        for (list<DictionaryOption>::iterator i=current_options.begin(); i != current_options.end(); /*no increment*/) {
 			while (true) {
 				// add ppossible corrections for current word path
-				if ((*i)->corrections_allowed(allowed_correction_count)) {
-					(*i)->InsertCorrections(next_options, word);
+                if ((*i).corrections_allowed(allowed_correction_count)) {
+                    (*i).InsertCorrections(next_options, word);
 				}
 
-				if ((*i)->ReachEnd(word)) {
-					if ((*i)->WordComplete()){
+                if ((*i).ReachEnd(word)) {
+                    if ((*i).WordComplete()){
 						// leave this path in options list, will be returned in result
 						++i;
 					} else {
@@ -72,7 +72,7 @@ SpellingDictionary::GetWordOptions(string &word, unsigned int allowed_correction
 					break;
 				}
 
-				if (!(*i)->MoveToNextSymbol(word)) {
+                if (!(*i).MoveToNextSymbol(word)) {
 					i = current_options.erase(i);
 					break;
 				}
@@ -97,12 +97,12 @@ SpellingDictionary::GetWordOptions(string &word, unsigned int allowed_correction
 		} else {
 			result.reserve(current_options.size());
 
-			for (list<option_type>::iterator result_option = current_options.begin(); result_option != current_options.end(); ++result_option) {
-				string _str = (*result_option)->GetString();
+            for (list<DictionaryOption>::iterator result_option = current_options.begin(); result_option != current_options.end(); ++result_option) {
+                string _str = (*result_option).GetString();
 
 				// ignore dublicates
 				if (find(result.begin(), result.end(), _str) == result.end()) {
-					result.push_back((*result_option)->GetString());
+                    result.push_back((*result_option).GetString());
 				}
 			}
 		}

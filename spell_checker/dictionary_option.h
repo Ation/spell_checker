@@ -3,17 +3,15 @@
 
 #include <string>
 #include <memory>
+#include <list>
 
 #include "spelling_dictionary.h"
 
 namespace spell_checker {
 
-class DictionaryOption;
-typedef std::shared_ptr<DictionaryOption> option_type;
-
 class DictionaryOption {
 public:
-	DictionaryOption(SpellingDictionary::node_type *root, int max_string_length);
+    DictionaryOption(DictionaryTreeNode *root, int max_string_length);
 
 	DictionaryOption(const DictionaryOption &src);
 
@@ -21,41 +19,35 @@ public:
 
 	bool		corrections_allowed(int	allowed_correction_count) const;
 
-	int			get_corrections_counnt() const;
+    int			get_corrections_count() const;
 
-	template<class _container>
-	void		InsertCorrections(_container &c, std::string &word) {
-		DictionaryOption *op;
-
+    void		InsertCorrections(std::list<DictionaryOption> &c, std::string &word) {
 		// add possible insertions
-		if (m_last_operation != InsertOperation) {
-			for (SpellingDictionary::node_type::iterator i_node = node->begin(); i_node != node->end(); ++i_node) {
-				if (0 == (*i_node)) {
-					continue;
-				}
+        std::vector<DictionaryTreeNode*> childs = node->getChilds();
+        for (std::vector<DictionaryTreeNode*>::iterator i_node = childs.begin(); i_node != childs.end(); ++i_node) {
+            if (0 == (*i_node)) {
+                continue;
+            }
 
-				if ((*i_node)->get_node_symbol() == node->get_node_symbol()) {
-					continue;
-				}
+            if ((*i_node)->get_node_symbol() == node->get_node_symbol()) {
+                continue;
+            }
 
-				op = new DictionaryOption(*this);
+            DictionaryOption op(*this);
 
-				op->insert_node((*i_node));
+            op.insert_node(*i_node);
 
-				c.push_back(option_type(op));
-			}
-		}
+            c.push_back(op);
+        }
 
 		// add removal if make sence
-		if (m_last_operation != RemoveOperation) {
-			if (word_index < word.length()) {
-				op = new DictionaryOption(*this);
+        if (word_index < word.length()) {
+            DictionaryOption op(*this);
 
-				op->skip_symbol();
+            op.skip_symbol();
 
-				c.push_back(option_type(op));
-			}
-		}
+            c.push_back(op);
+        }
 	}
 
 	bool	ReachEnd(std::string &word) {
@@ -92,7 +84,7 @@ private:
 		++word_index;
 	}
 
-	void		insert_node(SpellingDictionary::node_type	*new_node) {
+    void		insert_node(DictionaryTreeNode	*new_node) {
 		m_last_operation = InsertOperation;
 		++m_corrections;
 		node = new_node;
@@ -101,7 +93,7 @@ private:
 	int								m_corrections;
 	size_t							word_index;
 
-	SpellingDictionary::node_type	*node;
+    DictionaryTreeNode	*node;
 
 	enum _last_operation {
 		InsertOperation,

@@ -126,5 +126,12 @@ DictionaryTreeNode::get_node_string() const {
 		return string(*m_word);
 	} else {
 		return string();
-	}
+    }
+}
+
+vector<DictionaryTreeNode*> DictionaryTreeNode::getChilds() const
+{
+    vector<my_type*> result(m_childs);
+
+    return result;
 }

@@ -35,6 +35,8 @@ public:
 
 	static const char	_not_a_symbol = 0;
 
+    std::vector<my_type*> getChilds() const;
+
 private:
 	DictionaryTreeNode(char node_symbol, std::string &word);
 

@@ -3,7 +3,7 @@
 using namespace std;
 using namespace spell_checker;
 
-DictionaryOption::DictionaryOption(SpellingDictionary::node_type *root, int max_string_length) : m_corrections(0), word_index(0), node(root) {
+DictionaryOption::DictionaryOption(DictionaryTreeNode *root, int max_string_length) : m_corrections(0), word_index(0), node(root) {
 	m_last_operation = NotProceededOperation;
 }
 
