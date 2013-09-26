@@ -36,6 +36,8 @@ bool
 DictionaryOption::MoveToNextSymbol(const string &word) {
     node = node->get_child(word[word_index]);
 
+    string::traits_type::char_type a;
+
     if (0 != node) {
         // next symbol exists
         ++word_index;

@@ -4,7 +4,6 @@ project( spell_checker_lib )
 
 set( SOURCES
   dictionary_tree_node.cpp
-  spelling_dictionary.cpp
   dictionary_option.cpp
   )
 

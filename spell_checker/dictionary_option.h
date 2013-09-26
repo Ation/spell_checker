@@ -5,7 +5,7 @@
 #include <memory>
 #include <list>
 
-#include "spelling_dictionary.h"
+#include "dictionary_tree_node.h"
 
 namespace spell_checker {
 

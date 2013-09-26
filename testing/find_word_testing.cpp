@@ -18,6 +18,10 @@ static TestCase	cases[] = {
     {"Find all corrections", FindAllCorrections}
 };
 
+struct _CharDictionary {
+    typedef std::string string_type;
+};
+
 void
 StartAddWordTesting() {
     bool result;
@@ -44,7 +48,7 @@ StartAddWordTesting() {
 
 bool FindWord()
 {
-    SpellingDictionary  dict;
+    SpellingDictionary<_CharDictionary>  dict;
 
     const string str("word");
 
@@ -69,7 +73,7 @@ bool FindWordWhenCorrectionsArePossible()
     const string opt2("word");
     const string opt3("wordab");
 
-    SpellingDictionary  dict;
+    SpellingDictionary<_CharDictionary>  dict;
 
     dict.AddWord(target);
     dict.AddWord(opt1);
@@ -100,7 +104,7 @@ bool FindAllCorrections()
     bool containOpt2 = false;
     bool containOpt3 = false;
 
-    SpellingDictionary  dict;
+    SpellingDictionary<_CharDictionary>  dict;
 
     dict.AddWord(opt1);
     dict.AddWord(opt2);
