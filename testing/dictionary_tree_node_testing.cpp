@@ -2,6 +2,7 @@
 
 #include "testing.h"
 #include "dictionary_tree_node_testing.h"
+#include <latin_traits.h>
 #include <dictionary_tree_node.h>
 
 using namespace spell_checker;
@@ -9,6 +10,8 @@ using namespace std;
 
 static bool CreateRootNodeTest();
 static bool CreateChildTest();
+
+typedef DictionaryTreeNode<LatinTraist> node_type;
 
 static TestCase	cases[] = {
 	{"Create Root node", CreateRootNodeTest},
@@ -40,7 +43,7 @@ StartDictionaryTreeNodeTesting() {
 
 bool
 CreateRootNodeTest() {
-	DictionaryTreeNode *root_node = DictionaryTreeNode::CreateRootNode();
+    node_type *root_node = node_type::CreateRootNode();
 
 	bool result = false;
 
@@ -51,7 +54,7 @@ CreateRootNodeTest() {
 				break;
 			}
 
-			if (DictionaryTreeNode::_not_a_symbol != root_node->get_node_symbol()) {
+            if (LatinTraist::not_a_symbol() != root_node->get_node_symbol()) {
 				result = false;
 				break;
 			}
@@ -76,8 +79,8 @@ bool
 CreateChildTest() {
 	bool	result;
 
-	DictionaryTreeNode *root_node = DictionaryTreeNode::CreateRootNode();
-	DictionaryTreeNode *child = NULL;
+    node_type *root_node = node_type::CreateRootNode();
+    node_type *child = NULL;
 	char symbol = 'a';
 
 	if (NULL != root_node) {

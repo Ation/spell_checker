@@ -19,15 +19,14 @@ public:
 
     typedef typename __symbol_traits::string_type   string_type;
     typedef typename __symbol_traits::char_type     char_type;
-
-    static const int symbols_count = __symbol_traits::symbols_count;
+    typedef typename std::vector<my_type*>          childs_collection;
 
     static my_type*	CreateRootNode() {
-        return new my_type(__symbol_traits::not_a_symbol);
+        return new my_type(__symbol_traits::not_a_symbol());
     }
 
     virtual ~DictionaryTreeNode() {
-        for (int i=0; i < symbols_count; ++i) {
+        for (int i=0; i < __symbol_traits::symbols_count(); ++i) {
             if (0 != m_childs[i]) {
                 delete m_childs[i];
             }
@@ -81,10 +80,8 @@ public:
         }
     }
 
-    std::vector<my_type*> getChilds() const {
-        std::vector<my_type*> result(m_childs);
-
-        return result;
+    childs_collection   getChilds() const {
+        return childs_collection(m_childs);
     }
 
     static bool checkWord(const string_type &word) {
@@ -108,7 +105,7 @@ private:
     std::vector< my_type* >		m_childs;
 
     void        erase_child_pointers() {
-        m_childs.assign(symbols_count, NULL);
+        m_childs.assign(__symbol_traits::symbols_count(), NULL);
     }
 
     my_type*    get_child_by_index(int raw_index) {

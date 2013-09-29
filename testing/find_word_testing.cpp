@@ -4,6 +4,7 @@
 
 #include "testing.h"
 #include <spelling_dictionary.h>
+#include <latin_traits.h>
 
 using namespace spell_checker;
 using namespace std;
@@ -16,10 +17,6 @@ static TestCase	cases[] = {
     {"Find word", FindWord},
     {"Find word when corrections possible", FindWordWhenCorrectionsArePossible},
     {"Find all corrections", FindAllCorrections}
-};
-
-struct _CharDictionary {
-    typedef std::string string_type;
 };
 
 void
@@ -48,7 +45,7 @@ StartAddWordTesting() {
 
 bool FindWord()
 {
-    SpellingDictionary<_CharDictionary>  dict;
+    SpellingDictionary<LatinTraist>  dict;
 
     const string str("word");
 
@@ -73,7 +70,7 @@ bool FindWordWhenCorrectionsArePossible()
     const string opt2("word");
     const string opt3("wordab");
 
-    SpellingDictionary<_CharDictionary>  dict;
+    SpellingDictionary<LatinTraist>  dict;
 
     dict.AddWord(target);
     dict.AddWord(opt1);
@@ -104,7 +101,7 @@ bool FindAllCorrections()
     bool containOpt2 = false;
     bool containOpt3 = false;
 
-    SpellingDictionary<_CharDictionary>  dict;
+    SpellingDictionary<LatinTraist>  dict;
 
     dict.AddWord(opt1);
     dict.AddWord(opt2);

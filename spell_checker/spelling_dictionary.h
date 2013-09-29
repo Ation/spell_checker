@@ -9,18 +9,19 @@ namespace spell_checker {
 
 template<typename __symbol_traits>
 class SpellingDictionary {
+private:
+    typedef typename __symbol_traits::string_type                       string_type;
+    typedef typename spell_checker::DictionaryOption<__symbol_traits>   option_type;
+    typedef typename spell_checker::DictionaryTreeNode<__symbol_traits> node_type;
+
 public:
     SpellingDictionary() {
-        m_root = DictionaryTreeNode::CreateRootNode();
+        m_root = node_type::CreateRootNode();
     }
 
     ~SpellingDictionary() {
         delete m_root;
     }
-
-private:
-    typedef typename __symbol_traits::string_type string_type;
-    typedef typename spell_checker::DictionaryOption option_type;
 
 public:
 	// Method:
@@ -31,11 +32,11 @@ public:
 	//	true if word was added
 	//	false if word could not be added to dictionary
     bool AddWord(const string_type &word) {
-        if (!DictionaryTreeNode::checkWord(word)) {
+        if (!node_type::checkWord(word)) {
             return false;
         }
 
-        DictionaryTreeNode	*current_node = m_root;
+        node_type	*current_node = m_root;
         int			index = 0;
 
         while (true) {
@@ -67,13 +68,13 @@ public:
         }
 
         std::list<option_type> current_options;
-        std::list<spell_checker::DictionaryOption> next_options;
+        std::list<option_type> next_options;
         int                         current_corrections=0;
 
-        current_options.push_front(DictionaryOption(m_root, word.length()));
+        current_options.push_front(option_type(m_root));
 
         while (true) {
-            for (std::list<spell_checker::DictionaryOption>::iterator i=current_options.begin(); i != current_options.end(); /*no increment*/) {
+            for (typename std::list<option_type>::iterator i=current_options.begin(); i != current_options.end(); /*no increment*/) {
                 while (true) {
                     // add ppossible corrections for current word path
                     if ((*i).corrections_allowed(allowed_correction_count)) {
@@ -116,7 +117,7 @@ public:
             } else {
                 result.reserve(current_options.size());
 
-                for (std::list<spell_checker::DictionaryOption>::iterator result_option = current_options.begin(); result_option != current_options.end(); ++result_option) {
+                for (typename std::list<option_type>::iterator result_option = current_options.begin(); result_option != current_options.end(); ++result_option) {
                     string_type _str = (*result_option).GetString();
 
                     // ignore dublicates
@@ -132,11 +133,11 @@ public:
 
 private:
 	// disabled
-    SpellingDictionary(const SpellingDictionary<_Opt>&);
+    SpellingDictionary(const SpellingDictionary<__symbol_traits>&);
 	// disabled
-    SpellingDictionary& operator = (const SpellingDictionary<_Opt>&);
+    SpellingDictionary& operator = (const SpellingDictionary<__symbol_traits>&);
 
-    DictionaryTreeNode	*m_root;
+    node_type	*m_root;
 };
 
 }

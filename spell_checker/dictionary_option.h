@@ -11,8 +11,8 @@ namespace spell_checker {
 template<typename __symbol_traits>
 class DictionaryOption {
 public:
-    typedef typename DictionaryTreeNode<__symbol_traits> node_type;
-    typedef typename DictionaryOption<__symbol_traits> my_type;
+    typedef DictionaryTreeNode<__symbol_traits> node_type;
+    typedef DictionaryOption<__symbol_traits> my_type;
 
     typedef typename __symbol_traits::string_type   string_type;
 
@@ -33,13 +33,13 @@ public:
 
     void    InsertCorrections(std::list<my_type> &c, const string_type &word) const {
         // add possible insertions
-        std::vector<node_type*> childs = node->getChilds();
-        for (std::vector<node_type*>::iterator i_node = childs.begin(); i_node != childs.end(); ++i_node) {
+        typename node_type::childs_collection childs = m_node->getChilds();
+        for (typename node_type::childs_collection::iterator i_node = childs.begin(); i_node != childs.end(); ++i_node) {
             if (0 == (*i_node)) {
                 continue;
             }
 
-            if ((*i_node)->get_node_symbol() == node->get_node_symbol()) {
+            if ((*i_node)->get_node_symbol() == m_node->get_node_symbol()) {
                 continue;
             }
 
@@ -51,7 +51,7 @@ public:
         }
 
         // add removal if make sence
-        if (word_index < word.length()) {
+        if (m_word_index < word.length()) {
             my_type op(*this);
 
             op.skip_symbol();
@@ -69,12 +69,12 @@ public:
     }
 
     bool	MoveToNextSymbol(const string_type &word) {
-        node_type next_symbol_node = m_node->get_child(word[m_word_index]);
+        node_type *next_symbol_node = m_node->get_child(word[m_word_index]);
 
         if (NULL != next_symbol_node) {
             m_node = next_symbol_node;
             // next symbol exists
-            ++word_index;
+            ++m_word_index;
             m_last_operation = SymbolFindOperation;
             return true;
         }
