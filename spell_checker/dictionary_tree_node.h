@@ -66,27 +66,6 @@ public:
         return get_child_by_index(index);
     }
 
-    my_type*	create_child(char_type symbol) {
-        int     index = __symbol_traits::get_raw_index(symbol);
-        DictionaryTreeNode*     child = get_child_by_index(index);
-
-        if (NULL == child) {
-            child = new DictionaryTreeNode(symbol);
-            set_child(child, index);
-        }
-
-        return child;
-    }
-
-    my_type*	create_ending_child(char_type symbol,const string_type &word) {
-        my_type* child = create_child(symbol);
-        if (NULL != child) {
-            child->m_word = new string_type(word);
-        }
-
-        return child;
-    }
-
     bool		could_be_last() const {
         return NULL != m_word;
     }
@@ -105,10 +84,6 @@ public:
 
     childs_collection   getChilds() const {
         return childs_collection(m_childs);
-    }
-
-    static bool checkWord(const string_type &word) {
-        return __symbol_traits::isValid(word);
     }
 
 private:
@@ -137,6 +112,27 @@ private:
 
     void        set_child(my_type *child, int raw_index) {
         m_childs[raw_index] = child;
+    }
+
+    my_type*	create_child(char_type symbol) {
+        int     index = __symbol_traits::get_raw_index(symbol);
+        DictionaryTreeNode*     child = get_child_by_index(index);
+
+        if (NULL == child) {
+            child = new DictionaryTreeNode(symbol);
+            set_child(child, index);
+        }
+
+        return child;
+    }
+
+    my_type*	create_ending_child(char_type symbol,const string_type &word) {
+        my_type* child = create_child(symbol);
+        if (NULL != child) {
+            child->m_word = new string_type(word);
+        }
+
+        return child;
     }
 };
 

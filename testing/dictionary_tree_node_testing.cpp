@@ -15,7 +15,7 @@ typedef DictionaryTreeNode<LatinTraist> node_type;
 
 static TestCase	cases[] = {
 	{"Create Root node", CreateRootNodeTest},
-	{"Create child test", CreateChildTest}
+    //{"Create child test", CreateChildTest}
 };
 
 void
@@ -75,6 +75,7 @@ CreateRootNodeTest() {
 	return result;
 }
 
+#if 0
 bool
 CreateChildTest() {
 	bool	result;
@@ -125,3 +126,4 @@ CreateChildTest() {
 
 	return result;
 }
+#endif
