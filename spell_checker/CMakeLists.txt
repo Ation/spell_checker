@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 2.6)
 project( spell_checker_lib )
 
 set( SOURCES
-  dictionary_tree_node.cpp
   dictionary_option.cpp
   )
 
