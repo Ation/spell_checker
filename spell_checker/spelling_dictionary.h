@@ -7,10 +7,10 @@
 
 namespace spell_checker {
 
-template<typename _Opt>
+template<typename __symbol_traits>
 class SpellingDictionary {
 public:
-    SpellingDictionary() : m_count(0) {
+    SpellingDictionary() {
         m_root = DictionaryTreeNode::CreateRootNode();
     }
 
@@ -18,10 +18,8 @@ public:
         delete m_root;
     }
 
-public:
-    typedef typename _Opt::string_type string_type;
-
 private:
+    typedef typename __symbol_traits::string_type string_type;
     typedef typename spell_checker::DictionaryOption option_type;
 
 public:
@@ -43,7 +41,6 @@ public:
         while (true) {
             if (index == word.length() - 1) {
                 current_node = current_node->create_ending_child(word[index],word);
-                ++m_count;
                 break;
             } else {
                 current_node = current_node->create_child(word[index]);
@@ -140,8 +137,6 @@ private:
     SpellingDictionary& operator = (const SpellingDictionary<_Opt>&);
 
     DictionaryTreeNode	*m_root;
-
-	int			m_count;
 };
 
 }
