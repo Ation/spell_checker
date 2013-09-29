@@ -14,15 +14,38 @@ namespace spell_checker {
 
 template<typename __symbol_traits>
 class DictionaryTreeNode {
-public:
+private:
     typedef DictionaryTreeNode<__symbol_traits> my_type;
 
     typedef typename __symbol_traits::string_type   string_type;
     typedef typename __symbol_traits::char_type     char_type;
+
+public:
     typedef typename std::vector<my_type*>          childs_collection;
 
     static my_type*	CreateRootNode() {
         return new my_type(__symbol_traits::not_a_symbol());
+    }
+
+    bool AddWordToNode(const string_type &word) {
+        if (!__symbol_traits::isValid(word)) {
+            return false;
+        }
+
+        my_type     *current_node = this;
+        int         index = 0;
+
+        while (true) {
+            if (index == word.length() - 1) {
+                current_node = current_node->create_ending_child(word[index],word);
+                break;
+            } else {
+                current_node = current_node->create_child(word[index]);
+                ++index;
+            }
+        }
+
+        return true;
     }
 
     virtual ~DictionaryTreeNode() {

@@ -32,24 +32,7 @@ public:
 	//	true if word was added
 	//	false if word could not be added to dictionary
     bool AddWord(const string_type &word) {
-        if (!node_type::checkWord(word)) {
-            return false;
-        }
-
-        node_type	*current_node = m_root;
-        int			index = 0;
-
-        while (true) {
-            if (index == word.length() - 1) {
-                current_node = current_node->create_ending_child(word[index],word);
-                break;
-            } else {
-                current_node = current_node->create_child(word[index]);
-                ++index;
-            }
-        }
-
-        return true;
+        return m_root->AddWordToNode(word);
     }
 
 	// Method:
