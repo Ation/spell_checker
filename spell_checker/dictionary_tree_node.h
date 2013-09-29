@@ -129,7 +129,9 @@ private:
     my_type*	create_ending_child(char_type symbol,const string_type &word) {
         my_type* child = create_child(symbol);
         if (NULL != child) {
-            child->m_word = new string_type(word);
+            if (child->m_word == NULL) {
+                child->m_word = new string_type(word);
+            }
         }
 
         return child;
