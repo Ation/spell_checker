@@ -6,3 +6,4 @@ set( SPELL_CHECKER_INCLUDE "${PROJECT_SOURCE_DIR}/spell_checker")
 
 add_subdirectory( spell_checker)
 add_subdirectory( testing)
+add_subdirectory( dict_test )
