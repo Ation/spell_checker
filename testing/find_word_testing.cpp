@@ -19,7 +19,7 @@ static TestCase	cases[] = {
     {"Find all corrections", FindAllCorrections}
 };
 
-void
+bool
 StartAddWordTesting() {
     bool result;
     int passCount = 0;
@@ -40,6 +40,7 @@ StartAddWordTesting() {
         cout << "################################" << endl << endl;
     }
     cout << "Total: " << passCount << " passed; " << failCount << " failed" << endl << endl;
+    return failCount == 0;
 }
 
 

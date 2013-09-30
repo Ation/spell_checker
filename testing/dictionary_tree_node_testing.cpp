@@ -18,8 +18,7 @@ static TestCase	cases[] = {
     //{"Create child test", CreateChildTest}
 };
 
-void
-StartDictionaryTreeNodeTesting() {
+bool StartDictionaryTreeNodeTesting() {
 	bool result;
     int passCount = 0;
     int failCount = 0;
@@ -39,6 +38,7 @@ StartDictionaryTreeNodeTesting() {
 	}
 
     cout << "Total: " << passCount << " passed; " << failCount << " failed" << endl;
+    return failCount == 0;
 }
 
 bool
