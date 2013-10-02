@@ -1,8 +1,6 @@
 #include "main.h"
 
-#include "spell_checker_testing.h"
-
 int main(void) {
-	StartTest();
+    StartTesting(__testFunctions, sizeof(__testFunctions)/sizeof(*__testFunctions));
 	return 0;
 }

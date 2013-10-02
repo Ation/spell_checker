@@ -19,26 +19,7 @@ static TestCase	cases[] = {
 };
 
 bool StartDictionaryTreeNodeTesting() {
-	bool result;
-    int passCount = 0;
-    int failCount = 0;
-	for (int i=0; i<sizeof(cases)/sizeof(*cases); i++) {
-
-		cout << "################################" << endl;
-
-        cout << "Starting: " << cases[i].test_name << endl;
-		try {
-            result = cases[i].test_function();
-            cout << "Result: " << (result ? (passCount++, "PASS") : (failCount++, "FAIL")) << endl;
-		} catch (...) {
-			cout << "Ended with exception" << endl;
-		}
-
-		cout << "################################" << endl << endl;
-	}
-
-    cout << "Total: " << passCount << " passed; " << failCount << " failed" << endl;
-    return failCount == 0;
+    return ExecuteTestCases(cases, sizeof(cases)/sizeof(*cases));
 }
 
 bool

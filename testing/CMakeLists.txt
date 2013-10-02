@@ -12,7 +12,6 @@ set( SOURCES
 set( HEADERS
 	main.h
   	testing.h
- 	spell_checker_testing.h
   	dictionary_tree_node_testing.h
     find_word_testing.h
   )
