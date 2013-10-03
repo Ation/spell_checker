@@ -9,6 +9,7 @@
 */
 
 #include <vector>
+#include <map>
 
 namespace spell_checker {
 
@@ -20,8 +21,10 @@ private:
     typedef typename __symbol_traits::string_type   string_type;
     typedef typename __symbol_traits::char_type     char_type;
 
+    typedef std::map<char_type, my_type*> childs_map;
+
 public:
-    typedef typename std::vector<my_type*>          childs_collection;
+    typedef typename std::vector<my_type*>  childs_collection;
 
     static my_type*	CreateRootNode() {
         return new my_type(__symbol_traits::not_a_symbol());
@@ -49,10 +52,8 @@ public:
     }
 
     virtual ~DictionaryTreeNode() {
-        for (int i=0; i < __symbol_traits::symbols_count(); ++i) {
-            if (0 != m_childs[i]) {
-                delete m_childs[i];
-            }
+        for (typename childs_map::iterator i = m_childs.begin(); i != m_childs.end(); ++i) {
+            delete (*i).second;
         }
 
         if (NULL != m_word) {
@@ -60,10 +61,9 @@ public:
         }
     }
 
-    my_type*	get_child(char_type symbol) {
-        int index = __symbol_traits::get_raw_index(symbol);
-
-        return get_child_by_index(index);
+    my_type*	get_child(char_type symbol) const {
+        typename childs_map::const_iterator result = m_childs.find(symbol);
+        return (result == m_childs.end() ? NULL : (*result).second);
     }
 
     bool		could_be_last() const {
@@ -83,12 +83,19 @@ public:
     }
 
     childs_collection   getChilds() const {
-        return childs_collection(m_childs);
+        childs_collection result;
+
+        result.reserve(m_childs.size());
+
+        for (typename childs_map::const_iterator i=m_childs.begin(); i != m_childs.end(); ++i) {
+            result.push_back( (*i).second);
+        }
+
+        return result;
     }
 
 private:
     explicit DictionaryTreeNode(char_type node_symbol) : m_node_symbol(node_symbol), m_word(NULL) {
-        erase_child_pointers();
     }
 
 	// disabled
@@ -100,27 +107,18 @@ private:
     char_type			m_node_symbol;
     string_type			*m_word;
 
-    std::vector< my_type* >		m_childs;
+    childs_map          m_childs;
 
-    void        erase_child_pointers() {
-        m_childs.assign(__symbol_traits::symbols_count(), NULL);
-    }
-
-    my_type*    get_child_by_index(int raw_index) {
-        return m_childs[raw_index];
-    }
-
-    void        set_child(my_type *child, int raw_index) {
-        m_childs[raw_index] = child;
+    void        set_child(my_type *child) {
+        m_childs[child->m_node_symbol] = child;
     }
 
     my_type*	create_child(char_type symbol) {
-        int     index = __symbol_traits::get_raw_index(symbol);
-        DictionaryTreeNode*     child = get_child_by_index(index);
+        my_type     *child = get_child(symbol);
 
         if (NULL == child) {
-            child = new DictionaryTreeNode(symbol);
-            set_child(child, index);
+            child = new my_type(symbol);
+            set_child(child);
         }
 
         return child;
