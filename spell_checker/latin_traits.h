@@ -3,7 +3,7 @@
 
 #include <string>
 
-class LatinTraist {
+class LatinTraits {
 public:
     typedef char            char_type;
     typedef std::string     string_type;

@@ -1,14 +1,14 @@
 #include "latin_traits.h"
 
-int LatinTraist::symbols_count() {
+int LatinTraits::symbols_count() {
     return 26;
 }
 
-LatinTraist::char_type LatinTraist::not_a_symbol() {
+LatinTraits::char_type LatinTraits::not_a_symbol() {
     return 0;
 }
 
-bool LatinTraist::isValid(const LatinTraist::string_type &word) {
+bool LatinTraits::isValid(const LatinTraits::string_type &word) {
     if (word.empty()) {
         return false;
     }
@@ -25,12 +25,12 @@ bool LatinTraist::isValid(const LatinTraist::string_type &word) {
     return result;
 }
 
-bool LatinTraist::symbol_in_range(LatinTraist::char_type symbol) {
+bool LatinTraits::symbol_in_range(LatinTraits::char_type symbol) {
     return (((symbol >= 'a') && (symbol <= 'z')) ||
             ((symbol >= 'A') && (symbol <= 'Z')) );
 }
 
-int LatinTraist::get_raw_index(LatinTraist::char_type symbol) {
+int LatinTraits::get_raw_index(LatinTraits::char_type symbol) {
     if ((symbol >= 'a') && (symbol <= 'z')) {
         return symbol - 'a';
     }
