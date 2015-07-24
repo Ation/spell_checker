@@ -41,7 +41,7 @@ StartAddWordTesting() {
 
 bool FindWord()
 {
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     const string str("word");
 
@@ -66,7 +66,7 @@ bool FindWordWhenCorrectionsArePossible()
     const string opt2("word");
     const string opt3("wordab");
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(target);
     dict.AddWord(opt1);
@@ -97,7 +97,7 @@ bool FindAllCorrections()
     bool containOpt2 = false;
     bool containOpt3 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(opt1);
     dict.AddWord(opt2);
@@ -135,7 +135,7 @@ bool InsertionsInBegining() {
     bool    containWord1 = false;
     bool    containWord2 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(word1);
     dict.AddWord(word2);
@@ -173,7 +173,7 @@ bool InsertionsInTheMidle() {
     bool    containWord1 = false;
     bool    containWord2 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(word1);
     dict.AddWord(word2);
@@ -211,7 +211,7 @@ bool InsertionsInTheEnd() {
     bool    containWord1 = false;
     bool    containWord2 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(word1);
     dict.AddWord(word2);
@@ -249,7 +249,7 @@ bool RemovalsInTheBegining()
 
     bool    containWord1 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(word1);
     dict.AddWord(word2);
@@ -279,7 +279,7 @@ bool RemovalsInTheMidle() {
     bool    containWord1 = false;
     bool    containWord3 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(word1);
     dict.AddWord(word2);
@@ -316,7 +316,7 @@ bool RemovalsInTheEnd() {
 
     bool    containWord1 = false;
 
-    SpellingDictionary<LatinTraist>  dict;
+    SpellingDictionary<LatinTraits>  dict;
 
     dict.AddWord(word1);
     dict.AddWord(word2);

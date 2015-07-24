@@ -11,7 +11,7 @@ using namespace std;
 static bool CreateRootNodeTest();
 static bool CreateChildTest();
 
-typedef DictionaryTreeNode<LatinTraist> node_type;
+typedef DictionaryTreeNode<LatinTraits> node_type;
 
 static TestCase	cases[] = {
 	{"Create Root node", CreateRootNodeTest},
@@ -35,7 +35,7 @@ CreateRootNodeTest() {
 				break;
 			}
 
-            if (LatinTraist::not_a_symbol() != root_node->get_node_symbol()) {
+            if (LatinTraits::not_a_symbol() != root_node->get_node_symbol()) {
 				result = false;
 				break;
 			}
