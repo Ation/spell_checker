@@ -24,27 +24,27 @@ public:
     }
 
 public:
-	// Method:
-	//	AddWord - add word to dictionary.
-	// Input:
-	//	word - word to add
-	// Return:
-	//	true if word was added
-	//	false if word could not be added to dictionary
+    // Method:
+    //  AddWord - add word to dictionary.
+    // Input:
+    //  word - word to add
+    // Return:
+    //  true if word was added
+    //  false if word could not be added to dictionary
     bool AddWord(const string_type &word) {
         return m_root->AddWordToNode(word);
     }
 
-	// Method:
-	//	GetWordOptions - get possible words from dictionary
-	// Input
-	//	word - word to search
-	//	allowed_correction_count - allowed insertions or removals in original word
-	// Return
-	//	list of words from dictionary with equal (minimum) amount of corrections
-	//	if list is empty, than word and all possible modifications not exist in dictionary
-	// Remarks:
-	//	if exact match found word is returned in original form
+    // Method:
+    //  GetWordOptions - get possible words from dictionary
+    // Input
+    //  word - word to search
+    //  allowed_correction_count - allowed insertions or removals in original word
+    // Return
+    //  list of words from dictionary with equal (minimum) amount of corrections
+    //  if list is empty, than word and all possible modifications not exist in dictionary
+    // Remarks:
+    //  if exact match found word is returned in original form
     std::vector<string_type> GetWordOptions(const string_type &word, unsigned int allowed_correction_count) {
         if (word.empty()) {
             return std::vector<string_type>();
@@ -115,12 +115,12 @@ public:
     }
 
 private:
-	// disabled
+    // disabled
     SpellingDictionary(const SpellingDictionary<__symbol_traits>&);
-	// disabled
+    // disabled
     SpellingDictionary& operator = (const SpellingDictionary<__symbol_traits>&);
 
-    node_type	*m_root;
+    node_type   *m_root;
 };
 
 }

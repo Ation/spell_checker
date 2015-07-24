@@ -2,10 +2,10 @@
 #define __DICTIONARY_TREE_NODE_H__
 
 /*
-	file:
-		dictionary_tree_node.h
-	Description:
-		Contain class that represent node in string tree;
+    file:
+        dictionary_tree_node.h
+    Description:
+        Contain class that represent node in string tree;
 */
 
 #include <vector>
@@ -26,7 +26,7 @@ private:
 public:
     using childs_collection = std::vector<my_type*>;
 
-    static my_type*	CreateRootNode() {
+    static my_type* CreateRootNode() {
         return new my_type(__symbol_traits::not_a_symbol());
     }
 
@@ -61,16 +61,16 @@ public:
         }
     }
 
-    my_type*	get_child(char_type symbol) const {
+    my_type*    get_child(char_type symbol) const {
         typename childs_map::const_iterator result = m_childs.find(symbol);
         return (result == m_childs.end() ? NULL : (*result).second);
     }
 
-    bool		could_be_last() const {
+    bool        could_be_last() const {
         return NULL != m_word;
     }
 
-    char_type		get_node_symbol() const {
+    char_type       get_node_symbol() const {
         return m_node_symbol;
     }
 
@@ -98,14 +98,14 @@ private:
     explicit DictionaryTreeNode(char_type node_symbol) : m_node_symbol(node_symbol), m_word(NULL) {
     }
 
-	// disabled
+    // disabled
     DictionaryTreeNode(const my_type&);
-	// disabled
+    // disabled
     DictionaryTreeNode& operator = (const my_type&);
 
-	// members
-    char_type			m_node_symbol;
-    string_type			*m_word;
+    // members
+    char_type           m_node_symbol;
+    string_type         *m_word;
 
     childs_map          m_childs;
 
@@ -113,7 +113,7 @@ private:
         m_childs[child->m_node_symbol] = child;
     }
 
-    my_type*	create_child(char_type symbol) {
+    my_type*    create_child(char_type symbol) {
         my_type     *child = get_child(symbol);
 
         if (NULL == child) {
@@ -124,7 +124,7 @@ private:
         return child;
     }
 
-    my_type*	create_ending_child(char_type symbol,const string_type &word) {
+    my_type*    create_ending_child(char_type symbol,const string_type &word) {
         my_type* child = create_child(symbol);
         if (NULL != child) {
             if (child->m_word == NULL) {

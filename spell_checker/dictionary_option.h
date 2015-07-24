@@ -68,7 +68,7 @@ public:
         return m_node->could_be_last();
     }
 
-    bool	MoveToNextSymbol(const string_type &word) {
+    bool    MoveToNextSymbol(const string_type &word) {
         node_type *next_symbol_node = m_node->get_child(word[m_word_index]);
 
         if (NULL != next_symbol_node) {
@@ -82,7 +82,7 @@ public:
         return false;
     }
 
-    string_type		GetString() const {
+    string_type GetString() const {
         return m_node->get_node_string();
     }
 
@@ -93,23 +93,23 @@ private:
         ++m_word_index;
     }
 
-    void    insert_node(node_type	*new_node) {
+    void    insert_node(node_type   *new_node) {
         m_last_operation = InsertOperation;
         ++m_corrections;
         m_node = new_node;
     }
 
-	int								m_corrections;
-    size_t							m_word_index;
+    int         m_corrections;
+    size_t      m_word_index;
 
-    node_type	*m_node;
+    node_type   *m_node;
 
-	enum _last_operation {
-		InsertOperation,
-		RemoveOperation,
-		SymbolFindOperation,
-		NotProceededOperation
-	} m_last_operation;
+    enum _last_operation {
+        InsertOperation,
+        RemoveOperation,
+        SymbolFindOperation,
+        NotProceededOperation
+    } m_last_operation;
 };
 
 }
