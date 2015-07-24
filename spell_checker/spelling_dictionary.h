@@ -62,7 +62,7 @@ public:
         current_options.push_front(option_type(m_root));
 
         while (true) {
-            for (typename std::list<option_type>::iterator i=current_options.begin(); i != current_options.end(); /*no increment*/) {
+            for (auto i=current_options.begin(); i != current_options.end(); /*no increment*/) {
                 while (true) {
                     // add ppossible corrections for current word path
                     if ((*i).corrections_allowed(allowed_correction_count)) {
@@ -105,12 +105,12 @@ public:
             } else {
                 result.reserve(current_options.size());
 
-                for (typename std::list<option_type>::iterator result_option = current_options.begin(); result_option != current_options.end(); ++result_option) {
-                    string_type _str = (*result_option).GetString();
+                for (auto &result_option : current_options) {
+                    string_type _str = result_option.GetString();
 
                     // ignore dublicates
                     if (find(result.begin(), result.end(), _str) == result.end()) {
-                        result.push_back((*result_option).GetString());
+                        result.push_back(_str);
                     }
                 }
             }

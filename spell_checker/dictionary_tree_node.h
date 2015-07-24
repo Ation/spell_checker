@@ -56,8 +56,8 @@ public:
     }
 
     virtual ~DictionaryTreeNode() {
-        for (typename childs_map::iterator i = m_childs.begin(); i != m_childs.end(); ++i) {
-            delete (*i).second;
+        for(auto &i : m_childs) {
+            delete i.second;
         }
 
         if (nullptr != m_word) {
@@ -66,7 +66,7 @@ public:
     }
 
     my_type*    get_child(char_type symbol) const {
-        typename childs_map::const_iterator result = m_childs.find(symbol);
+        auto result = m_childs.find(symbol);
         return (result == m_childs.end() ? nullptr : (*result).second);
     }
 
@@ -91,8 +91,8 @@ public:
 
         result.reserve(m_childs.size());
 
-        for (typename childs_map::const_iterator i=m_childs.begin(); i != m_childs.end(); ++i) {
-            result.push_back( (*i).second);
+        for (const auto &i : m_childs) {
+            result.push_back( i.second);
         }
 
         return result;
