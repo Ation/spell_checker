@@ -11,10 +11,10 @@ namespace spell_checker {
 template<typename __symbol_traits>
 class DictionaryOption {
 public:
-    typedef DictionaryTreeNode<__symbol_traits> node_type;
-    typedef DictionaryOption<__symbol_traits> my_type;
+    using node_type = DictionaryTreeNode<__symbol_traits>;
+    using my_type = DictionaryOption<__symbol_traits>;
 
-    typedef typename __symbol_traits::string_type   string_type;
+    using string_type = typename __symbol_traits::string_type;
 
     explicit DictionaryOption(node_type *root) : m_corrections(0), m_word_index(0),
       m_node(root), m_last_operation(NotProceededOperation)

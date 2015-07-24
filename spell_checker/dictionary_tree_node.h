@@ -2,7 +2,7 @@
 #define __DICTIONARY_TREE_NODE_H__
 
 /*
-	file: 
+	file:
 		dictionary_tree_node.h
 	Description:
 		Contain class that represent node in string tree;
@@ -16,15 +16,15 @@ namespace spell_checker {
 template<typename __symbol_traits>
 class DictionaryTreeNode {
 private:
-    typedef DictionaryTreeNode<__symbol_traits> my_type;
+    using my_type = DictionaryTreeNode<__symbol_traits>;
 
-    typedef typename __symbol_traits::string_type   string_type;
-    typedef typename __symbol_traits::char_type     char_type;
+    using string_type = typename __symbol_traits::string_type;
+    using char_type = typename __symbol_traits::char_type;
 
-    typedef std::map<char_type, my_type*> childs_map;
+    using childs_map =std::map<char_type, my_type*>;
 
 public:
-    typedef typename std::vector<my_type*>  childs_collection;
+    using childs_collection = std::vector<my_type*>;
 
     static my_type*	CreateRootNode() {
         return new my_type(__symbol_traits::not_a_symbol());

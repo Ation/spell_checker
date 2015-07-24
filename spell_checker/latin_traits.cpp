@@ -1,7 +1,7 @@
 #include "latin_traits.h"
 
 int LatinTraits::symbols_count() {
-    return 26;
+    return int('z'-'a') + 1;
 }
 
 LatinTraits::char_type LatinTraits::not_a_symbol() {

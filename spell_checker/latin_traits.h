@@ -5,8 +5,8 @@
 
 class LatinTraits {
 public:
-    typedef char            char_type;
-    typedef std::string     string_type;
+    using char_type = char;
+    using string_type = std::string;
 
     static int symbols_count();
 

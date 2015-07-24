@@ -10,9 +10,9 @@ namespace spell_checker {
 template<typename __symbol_traits>
 class SpellingDictionary {
 private:
-    typedef typename __symbol_traits::string_type                       string_type;
-    typedef typename spell_checker::DictionaryOption<__symbol_traits>   option_type;
-    typedef typename spell_checker::DictionaryTreeNode<__symbol_traits> node_type;
+    using string_type = typename __symbol_traits::string_type;
+    using option_type = spell_checker::DictionaryOption<__symbol_traits>;
+    using node_type = spell_checker::DictionaryTreeNode<__symbol_traits>;
 
 public:
     SpellingDictionary() {
