@@ -30,6 +30,10 @@ public:
         return new my_type(__symbol_traits::not_a_symbol());
     }
 
+
+    DictionaryTreeNode(const my_type&) = delete;
+    DictionaryTreeNode& operator = (const my_type&) = delete;
+
     bool AddWordToNode(const string_type &word) {
         if (!__symbol_traits::isValid(word)) {
             return false;
@@ -97,11 +101,6 @@ public:
 private:
     explicit DictionaryTreeNode(char_type node_symbol) : m_node_symbol(node_symbol), m_word(nullptr) {
     }
-
-    // disabled
-    DictionaryTreeNode(const my_type&);
-    // disabled
-    DictionaryTreeNode& operator = (const my_type&);
 
     // members
     char_type           m_node_symbol;

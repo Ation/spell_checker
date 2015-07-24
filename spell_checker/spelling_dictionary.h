@@ -23,6 +23,11 @@ public:
         delete m_root;
     }
 
+    SpellingDictionary(const SpellingDictionary<__symbol_traits>&) = delete;
+
+    SpellingDictionary& operator = (const SpellingDictionary<__symbol_traits>&) = delete;
+
+
 public:
     // Method:
     //  AddWord - add word to dictionary.
@@ -115,11 +120,6 @@ public:
     }
 
 private:
-    // disabled
-    SpellingDictionary(const SpellingDictionary<__symbol_traits>&);
-    // disabled
-    SpellingDictionary& operator = (const SpellingDictionary<__symbol_traits>&);
-
     node_type   *m_root;
 };
 
