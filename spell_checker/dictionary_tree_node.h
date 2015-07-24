@@ -56,18 +56,18 @@ public:
             delete (*i).second;
         }
 
-        if (NULL != m_word) {
+        if (nullptr != m_word) {
             delete m_word;
         }
     }
 
     my_type*    get_child(char_type symbol) const {
         typename childs_map::const_iterator result = m_childs.find(symbol);
-        return (result == m_childs.end() ? NULL : (*result).second);
+        return (result == m_childs.end() ? nullptr : (*result).second);
     }
 
     bool        could_be_last() const {
-        return NULL != m_word;
+        return nullptr != m_word;
     }
 
     char_type       get_node_symbol() const {
@@ -75,7 +75,7 @@ public:
     }
 
     string_type     get_node_string() const {
-        if (NULL != m_word) {
+        if (nullptr != m_word) {
             return string_type(*m_word);
         } else {
             return string_type();
@@ -95,7 +95,7 @@ public:
     }
 
 private:
-    explicit DictionaryTreeNode(char_type node_symbol) : m_node_symbol(node_symbol), m_word(NULL) {
+    explicit DictionaryTreeNode(char_type node_symbol) : m_node_symbol(node_symbol), m_word(nullptr) {
     }
 
     // disabled
@@ -116,7 +116,7 @@ private:
     my_type*    create_child(char_type symbol) {
         my_type     *child = get_child(symbol);
 
-        if (NULL == child) {
+        if (nullptr == child) {
             child = new my_type(symbol);
             set_child(child);
         }
@@ -126,8 +126,8 @@ private:
 
     my_type*    create_ending_child(char_type symbol,const string_type &word) {
         my_type* child = create_child(symbol);
-        if (NULL != child) {
-            if (child->m_word == NULL) {
+        if (nullptr != child) {
+            if (child->m_word == nullptr) {
                 child->m_word = new string_type(word);
             }
         }

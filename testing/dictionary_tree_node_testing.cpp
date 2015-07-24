@@ -28,7 +28,7 @@ CreateRootNodeTest() {
 
 	bool result = false;
 
-	if (NULL != root_node) {
+	if (nullptr != root_node) {
 		do {
 			if (root_node->could_be_last()) {
 				result = false;
@@ -62,26 +62,26 @@ CreateChildTest() {
 	bool	result;
 
     node_type *root_node = node_type::CreateRootNode();
-    node_type *child = NULL;
+    node_type *child = nullptr;
 	char symbol = 'a';
 
-	if (NULL != root_node) {
+	if (nullptr != root_node) {
 		do {
 			result = false;
 
 			child = root_node->get_child(symbol);
-			if (NULL != child) {
+			if (nullptr != child) {
 				break;
 			}
 
 			child = root_node->create_child(symbol);
 
-			if (NULL == child) {
+			if (nullptr == child) {
 				break;
 			}
 
 			child = root_node->get_child(symbol);
-			if (NULL == child) {
+			if (nullptr == child) {
 				break;
 			}
 

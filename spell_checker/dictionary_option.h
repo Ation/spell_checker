@@ -35,7 +35,7 @@ public:
         // add possible insertions
         typename node_type::childs_collection childs = m_node->getChilds();
         for (typename node_type::childs_collection::iterator i_node = childs.begin(); i_node != childs.end(); ++i_node) {
-            if (0 == (*i_node)) {
+            if (nullptr == (*i_node)) {
                 continue;
             }
 
@@ -71,7 +71,7 @@ public:
     bool    MoveToNextSymbol(const string_type &word) {
         node_type *next_symbol_node = m_node->get_child(word[m_word_index]);
 
-        if (NULL != next_symbol_node) {
+        if (nullptr != next_symbol_node) {
             m_node = next_symbol_node;
             // next symbol exists
             ++m_word_index;
